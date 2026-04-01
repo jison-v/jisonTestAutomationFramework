@@ -2,7 +2,8 @@
 Feature: Automation Practice Login
 
   Scenario Outline:<ScenarioDescription>
-    Given user open the automation practice website '<URL>'
+    Given user open the automation practice website "<URL>"
+    When user clicks on the "Products" menu option
 
     Examples:
       | ScenarioDescription                  | URL                             |

@@ -70,8 +70,36 @@ public class Browser {
         }
     }
 
+    //Zoom in by 10% using JavascriptExecutor
+    public static void zoomIn(WebDriver driver) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("document.body.style.zoom='110%'");
+    }
+
+    //Zoom out by 10% using JavascriptExecutor
+    public static void zoomOut(WebDriver driver) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("document.body.style.zoom='90%'");
+    }
+
+    //Reset zoom to 100% (default)
+    public static void resetZoom(WebDriver driver) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("document.body.style.zoom='100%'");
+    }
+
+    //Set zoom to a specific percentage (e.g., 50, 100, 150)
+    public static void setZoom(int zoomPercentage) {
+        if (zoomPercentage < 0 || zoomPercentage > 500) {
+            throw new IllegalArgumentException("Zoom percentage must be between 0 and 500");
+        }
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("document.body.style.zoom='" + zoomPercentage + "%'");
+    }
+
     //Navigate to the specified URL using the current WebDriver instance
     public static void navigateTo(String url) {
+
         getDriver().get(url);
     }
 
